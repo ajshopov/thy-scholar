@@ -1,1 +1,10 @@
 <p>Question asked: <%= @question.query %></p>
+
+<% if @question.answer.nil? %>
+  <%= simple_form_for @question do |f| %>
+    <%= f.input :answer %>
+    <%= f.button :submit %>
+  <% end %>
+<% else %>
+  <p><%= @question.answer %></p>
+<% end %>

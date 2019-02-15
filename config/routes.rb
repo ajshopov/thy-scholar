@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  root "questions#index"
+  root 'questions#index'
 
   resources :questions
 end
