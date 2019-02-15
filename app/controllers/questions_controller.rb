@@ -17,13 +17,14 @@ class QuestionsController < ApplicationController
       flash[:notice] = "Question has been created."
       redirect_to @question
     else
-      # nothing yet
+      flash.now[:alert] = "Question has not been created."
+      render 'new'
     end
   end
 
   private
 
   def question_params
-    params.require(:question).permit(:expert, :question)
+    params.require(:question).permit(:query)
   end
 end
