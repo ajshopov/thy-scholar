@@ -3,5 +3,9 @@
 Rails.application.routes.draw do
   root 'questions#index'
 
-  resources :questions
+  resources :questions do
+    member do
+      post :answering
+    end
+  end
 end

@@ -1,9 +1,9 @@
 <p>Question asked: <%= @question.query %></p>
 
 <% if @question.answer.nil? %>
-  <%= simple_form_for @question do |f| %>
+  <%= simple_form_for @question, :url => answering_question_path, :method => :post do |f| %>
     <%= f.input :answer %>
-    <%= f.button :submit %>
+    <%= f.button :submit, 'Submit Answer' %>
   <% end %>
 <% else %>
   <p><%= @question.answer %></p>

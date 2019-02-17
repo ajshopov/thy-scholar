@@ -1,0 +1,17 @@
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 100
+  Exclude:
+    - "config/**/*"
+    - "db/**/*"
+    - "Gemfile"
+    - "Rakefile"
+
+Style/MixinUsage:
+  Exclude:
+    - "bin/**/*"

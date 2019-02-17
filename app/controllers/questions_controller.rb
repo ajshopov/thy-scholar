@@ -25,11 +25,11 @@ class QuestionsController < ApplicationController
     end
   end
 
-  def update
+  def answering
     @question = Question.find(params[:id])
     @question.update(question_params)
 
-    flash[:notice] = "Question has been updated."
+    flash[:notice] = 'Answer has been created.'
     redirect_to @question
   end
 
