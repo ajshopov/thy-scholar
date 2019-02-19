@@ -3,7 +3,10 @@
 require 'rails_helper'
 
 RSpec.feature 'Users can create new questions' do
+  # let(:user) { FactoryBot.create(:user) }
+
   before do
+    # login_as(user)
     visit '/'
     click_link 'New Question'
   end

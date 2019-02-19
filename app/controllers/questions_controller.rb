@@ -7,6 +7,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    # @answer = @question.answer.build
   end
 
   def new
@@ -25,17 +26,17 @@ class QuestionsController < ApplicationController
     end
   end
 
-  def answering
-    @question = Question.find(params[:id])
-    @question.update(question_params)
+  # def update
+  #   @question = Question.find(params[:id])
+  #   @question.update(question_params)
 
-    flash[:notice] = 'Answer has been created.'
-    redirect_to @question
-  end
+  #   flash[:notice] = 'Question has been updated.'
+  #   redirect_to @question
+  # end
 
   private
 
   def question_params
-    params.require(:question).permit(:query, :answer)
+    params.require(:question).permit(:query, :user)
   end
 end
