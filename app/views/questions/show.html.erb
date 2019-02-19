@@ -4,8 +4,13 @@
   <h3>Answer</h3>
 </header>
 
-<% if @question.answer.nil? %>
-  <%= render "answers/form", question: @question, answer: @answer %>
+<% if @question.answers.persisted.any? %>
+  <%= render @question.answers.persisted %>
 <% else %>
-  <p><%= @question.answer %></p>
+  <p>no answer</p>
 <% end %>
+
+<%= render "answers/form", question: @question, answer: @answer %>
+
+create answer
+<%# link_to "Add Answer", new_question_answer_path(@question) %>

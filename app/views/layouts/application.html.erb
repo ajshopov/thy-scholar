@@ -16,6 +16,7 @@
 
     <nav>
       <ul>
+        <li><%= link_to "Home", root_path %>
         <% if user_signed_in? %>
           <p>Signed in as <%= current_user.email %></p>
           <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>

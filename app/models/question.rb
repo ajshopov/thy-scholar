@@ -1,5 +1,5 @@
 class Question < ApplicationRecord
   validates :query, presence: true
-  has_one :answer
+  has_many :answers
   # belongs_to :user
 end

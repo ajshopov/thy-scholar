@@ -1,13 +1,12 @@
 require 'rails_helper'
 
 RSpec.feature 'Users can answer questions' do
-  scenario 'on the question page' do
-    FactoryBot.create(:question, query: 'Very philosophical question')
+  let(:question) { FactoryBot.create(:question) }
 
-    visit '/'
-    click_link 'Very philosophical question'
-    fill_in 'Answer', with: 'First answer'
-    click_button 'Submit Answer'
+  scenario 'by putting a valid answer' do
+    visit question_path(question)
+    fill_in 'Response', with: 'First answer'
+    click_button 'Create Answer'
 
     expect(page).to have_content 'Answer has been created.'
     expect(page).to have_content 'First answer'
