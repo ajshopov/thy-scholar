@@ -25,6 +25,7 @@ RSpec.feature 'Users can create new questions' do
       click_button 'Create Question'
 
       expect(page).to have_content 'Question has been created.'
+      expect(page).to have_content "Asked by #{user.email}"
     end
 
     scenario 'with invalid attributes' do
