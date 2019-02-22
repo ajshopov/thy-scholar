@@ -1,15 +1,19 @@
 <h1>Question Page</h1>
 
 <p>Question asked: <%= @question.query %></p>
-<p>Asked by <%= @question.user.email %></p>
+<p>Asked by <%= @question.sender.email %></p>
+<p>Directed to <%= @question.recipient.email %></p>
 
 <header>
   <h3>Answer</h3>
 </header>
 
-<% if @question.answer.nil? %>
-  <p>no answer</p>
+
+<% if @question.recipient == current_user && @question.answer.nil? %>
   <%= render "answers/form", question: @question, answer: Answer.new %>
-<% else %>
+<% elsif @question.answer %>
+  <p>answered!</p>
   <%= @question.answer.response %>
+<% else %>
+  <p>Hasn't been answered yet</p>
 <% end %>

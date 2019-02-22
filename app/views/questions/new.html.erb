@@ -2,5 +2,6 @@
 
 <%= simple_form_for @question do |f| %>
   <%= f.input :query, label: "Your Question" %>
+  <%= f.association :recipient, label_method: :email, value_method: :id %>
   <%= f.button :submit %>
 <% end %>

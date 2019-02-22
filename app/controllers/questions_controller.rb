@@ -7,17 +7,16 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
-    # @answer = @question.build_answer
+    @answer = @question.answer
   end
 
   def new
     @question = Question.new
   end
-
+  
   def create
     @question = Question.new(question_params)
-    @question.user = current_user
-
+    @question.sender_id = current_user.id
     if @question.save
       flash[:notice] = 'Question has been created.'
       redirect_to @question
@@ -38,6 +37,6 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:query)
+    params.require(:question).permit(:query, :recipient_id)
   end
 end

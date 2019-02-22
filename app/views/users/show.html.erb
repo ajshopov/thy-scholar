@@ -1,9 +1,16 @@
 <h1>User Profile for <%= @user.email %></h1>
 
+<%= link_to "New question", new_question_path %>
+
+<p>recipient id: <%= @user.id %></p>
+<% if current_user %>
+  <p>sender id: <%= current_user.id %></p>
+<% end %>
+
 <% if @user == current_user %>
   <p>This is your profile, answer questions here</p>
 <% else %>
-  <%= render "questions/form", question: Question.new, answer: Answer.new %>
+  <%# render "questions/form", question: @question %>
 <% end %>
 
 <h4>Outstanding Questions</h4>
