@@ -1,7 +1,9 @@
 require 'rails_helper'
 
 RSpec.feature 'Users can answer questions' do
-  let(:question) { FactoryBot.create(:question) }
+  let(:user) { FactoryBot.create(:user) }
+  let(:expert) { FactoryBot.create(:user) }
+  let(:question) { FactoryBot.create(:question, user: user) }
 
   scenario 'with a valid answer' do
     visit question_path(question)

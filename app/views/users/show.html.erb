@@ -1,8 +1,10 @@
-<h1>User Profile</h1>
+<h1>User Profile for <%= @user.email %></h1>
 
-<h3>To build...</h3>
-
-<%= link_to "Any me anything...", new_question_path %>
+<% if @user == current_user %>
+  <p>This is your profile, answer questions here</p>
+<% else %>
+  <%= render "questions/form", question: Question.new, answer: Answer.new %>
+<% end %>
 
 <h4>Outstanding Questions</h4>
 <p>Text question here</p>
