@@ -1,9 +1,0 @@
-<h1>Questions Index</h1>
-
-<%# link_to "New Question", new_question_path %>
-
-<div>
-  <% @questions.each do |question| %>
-    <h3><%= link_to question.query, question %></h3>
-  <% end %>
-</div>
