@@ -2,6 +2,6 @@
 
 <%= simple_form_for @question do |f| %>
   <%= f.input :query, label: "Your Question" %>
-
+  <%= f.association :recipient, as: :hidden, value: @user.id %>
   <%= f.button :submit %>
 <% end %>

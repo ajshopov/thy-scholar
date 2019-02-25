@@ -6,28 +6,32 @@ RSpec.feature 'Users can answer questions' do
   let(:expert) { FactoryBot.create(:user) }
   let(:question) { FactoryBot.create(:question, sender: sender, recipient: expert) }
 
-  scenario 'as the intended recipient' do
-    login_as(expert)
-    visit question_path(question)
+  context 'expert can answer' do
+    before do
+      login_as(expert)
+      visit question_path(question)
+      click_link 'Answer this question'
+    end
 
-    fill_in 'Response', with: 'First answer'
-    click_button 'Create Answer'
+    scenario 'correctly' do
+      fill_in 'Answer', with: 'First answer'
+      click_button 'Create Answer'
+  
+      expect(page).to have_content 'Answer has been created.'
+      expect(page).to have_content 'First answer'
+    end
 
-    expect(page).to have_content 'Answer has been created.'
-    expect(page).to have_content 'First answer'
+    scenario 'but not with an invalid answer' do
+      click_button 'Create Answer'
+  
+      expect(page).to have_content 'Answer has not been created.'
+    end
   end
 
-  scenario 'not if they arent the intended recipient' do
+  scenario 'but not if they arent the intended recipient' do
     login_as(other)
     visit question_path(question)
 
-    expect(page).not_to have_button 'Create Answer'
+    expect(page).not_to have_link 'Answer this question'
   end
-
-  # scenario 'with an invalid answer' do
-  #   click_button 'Create Answer'
-
-  #   expect(page).to have_content 'Answer has not been created.'
-  #   expect(page).to have_content "Response can't be blank"
-  # end
 end

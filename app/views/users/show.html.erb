@@ -1,6 +1,6 @@
 <h1>User Profile for <%= @user.email %></h1>
 
-<%= link_to "New question", new_question_path %>
+<%# link_to "New question", new_question_path %>
 
 <p>recipient id: <%= @user.id %></p>
 <% if current_user %>
@@ -17,3 +17,7 @@
 <p>Text question here</p>
 <h4>Your History</h4>
 <p>Text question here</p>
+
+<% if user_session %>
+  <%= render "questions/form", question: @question %>
+<% end %>

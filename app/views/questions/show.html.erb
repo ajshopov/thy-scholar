@@ -9,10 +9,12 @@
 </header>
 
 
-<% if @question.recipient == current_user && @question.answer.nil? %>
-  <%= render "answers/form", question: @question, answer: Answer.new %>
-<% elsif @question.answer %>
-  <p>answered!</p>
+<% if @question.recipient == current_user && @question.answer.response.nil? %>
+  <%# render "answers/form", question: @question, answer: @answer %>
+  <%= link_to "Answer this question", new_question_answer_path(@question) %>
+<% end %>
+<% if @question.answer.response %>
+  <p>answered! Response...</p>
   <%= @question.answer.response %>
 <% else %>
   <p>Hasn't been answered yet</p>

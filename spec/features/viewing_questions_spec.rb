@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.feature 'Users can view questions' do
   scenario 'with question details on the question page' do
-    user = FactoryBot.create(:user)
+    sender = FactoryBot.create(:user)
     recipient = FactoryBot.create(:user)
     question = FactoryBot.create(:question, query: 'Testing out',
-      sender: user, recipient: recipient)
+      sender: sender, recipient: recipient)
 
     visit '/'
     click_link 'Testing out'

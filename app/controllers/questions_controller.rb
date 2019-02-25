@@ -7,7 +7,11 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
-    @answer = @question.answer
+    if Answer.exists?(question_id: @question.id)
+      @answer = Answer.where(question_id: @question.id)
+    else
+      @answer = @question.build_answer
+    end
   end
 
   def new
@@ -17,6 +21,7 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
     @question.sender_id = current_user.id
+
     if @question.save
       flash[:notice] = 'Question has been created.'
       redirect_to @question
