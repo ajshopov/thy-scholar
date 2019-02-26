@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   resources :questions do
     resources :answers, only: [:create, :new]
   end
+  get 'about' => 'pages#about'
+  get 'contact' => 'pages#contact'
 end

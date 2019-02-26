@@ -1,6 +1,9 @@
 nav{
     height: 48px;
     max-width: $max-width;
+    li{
+        display: inline;
+    }
 }
 
 ul {
@@ -8,7 +11,4 @@ ul {
     margin: 0;
     padding: 0;
     height: 100%;
-    li{
-        display: inline;
-    }
 }
