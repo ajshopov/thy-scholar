@@ -10,14 +10,15 @@
 <% if @user == current_user %>
   <p>This is your profile, answer questions here</p>
 <% else %>
-  <%# render "questions/form", question: @question %>
+  <%= render "questions/form", question: @question %>
 <% end %>
 
-<h4>Outstanding Questions</h4>
-<p>Text question here</p>
-<h4>Your History</h4>
-<p>Text question here</p>
+<h4>Questions you've answered</h4>
+<% @user.is_recipient_for.each do |question| %>
+  <p><%= question.query %></p>
+<% end %>
 
-<% if user_session %>
-  <%= render "questions/form", question: @question %>
+<h4>Questions you've asked</h4>
+<% @user.is_sender_for.each do |question| %>
+  <p><%= question.query %></p>
 <% end %>
