@@ -5,6 +5,7 @@ RSpec.feature "Users can sign up" do
     visit '/'
     click_link 'Sign Up'
     fill_in "Email", with: "test@thyscholar.com"
+    fill_in "Name", with: "Joe Blow"
     fill_in "user_password", with: "password"
     fill_in "Password confirmation", with: "password"
     click_button "Sign up"
