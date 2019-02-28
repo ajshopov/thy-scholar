@@ -1,0 +1,33 @@
+h1 User Profile for #{@user.name}
+
+p recipient id: #{@user.id}
+- if current_user
+  p sender id: #{current_user.id}
+
+- if @user == current_user
+  = link_to "Edit your details", edit_user_registration_path
+  p This is your profile, answer questions here
+- elsif user_signed_in?
+  = render "questions/form", question: @question
+
+h4 Questions you've answered
+- @user.is_recipient_for.each do |question|
+  .question
+    p 
+    strong Q: 
+    = link_to question.query, question
+    p
+    strong FROM:
+    p
+    strong Amount:
+
+h4 Questions you've asked
+- @user.is_sender_for.each do |question|
+  .question
+    p 
+    strong Q: 
+    = link_to question.query, question
+    p
+    strong TO:
+    p
+    strong Amount:

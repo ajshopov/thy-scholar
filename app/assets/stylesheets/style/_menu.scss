@@ -1,14 +1,19 @@
 nav{
     height: 48px;
-    max-width: $max-width;
+    background-color: $light-grey;
     li{
         display: inline;
+        padding: 10px;
+        a{
+            color: $text-color;
+            text-decoration: none;
+        }
     }
 }
 
 ul {
+    max-width: 1280px;
     list-style-type: none;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
-    height: 100%;
 }
