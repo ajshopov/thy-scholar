@@ -42,6 +42,6 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:query, :recipient_id)
+    params.require(:question).permit(:query, :recipient_id, :price)
   end
 end

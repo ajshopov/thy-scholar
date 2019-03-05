@@ -21,6 +21,7 @@ RSpec.feature 'Users can create new questions' do
 
     scenario 'with valid attributes' do
       fill_in 'Your Question', with: 'Why is this website so poorly designed?'
+      fill_in 'Amount', with: 10
       click_button 'Create Question'
 
       expect(page).to have_content 'Question has been created.'

@@ -8,4 +8,5 @@ h1 Questions
     strong To: 
     = question.recipient.email
     p
-    strong Amount:
+    strong Amount: 
+    = number_to_currency(question.price)
