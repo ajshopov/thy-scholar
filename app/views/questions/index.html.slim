@@ -1,12 +1,11 @@
 h1 Questions
-.questions
-  - @questions.each do |question|
-    .question
-      p
-        .strong Q: 
-        = link_to question.query, question
-      p 
-        .strong To: 
-        = question.recipient.email
-      p
-        .strong Amount:
+- @questions.each do |question|
+  .question
+    p
+    strong Q: 
+    = link_to question.query, question
+    p 
+    strong To: 
+    = question.recipient.email
+    p
+    strong Amount:
