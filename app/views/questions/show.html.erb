@@ -3,6 +3,7 @@
 <p>Question asked: <%= @question.query %></p>
 <p>Asked by <%= @question.sender.email %></p>
 <p>Directed to <%= @question.recipient.email %></p>
+<p>State: <%= @question.state %></p>
 <p>Amount <%= number_to_currency(@question.price) %></p>
 
 <header>
