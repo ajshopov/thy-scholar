@@ -21,11 +21,13 @@ RSpec.feature 'Users can create new questions' do
 
     scenario 'with valid attributes' do
       fill_in 'Your Question', with: 'Why is this website so poorly designed?'
+      fill_in 'Amount (USD)', with: 10
       click_button 'Create Question'
 
       expect(page).to have_content 'Question has been created.'
       expect(page).to have_content "Asked by #{sender.email}"
       expect(page).to have_content "Directed to #{expert.email}"
+      expect(page).to have_content "State: pending"
     end
 
     scenario 'with invalid attributes' do

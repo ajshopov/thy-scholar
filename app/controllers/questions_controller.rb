@@ -21,6 +21,7 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
     @question.sender_id = current_user.id
+    @question.state = 'pending'
 
     if @question.save
       flash[:notice] = 'Question has been created.'
@@ -42,6 +43,6 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:query, :recipient_id)
+    params.require(:question).permit(:query, :recipient_id, :price)
   end
 end

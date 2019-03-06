@@ -4,7 +4,8 @@ RSpec.feature 'Users can answer questions' do
   let(:sender) { FactoryBot.create(:user) }
   let(:other) { FactoryBot.create(:user) }
   let(:expert) { FactoryBot.create(:user) }
-  let(:question) { FactoryBot.create(:question, sender: sender, recipient: expert) }
+  let(:question) { FactoryBot.create(:question,
+    sender: sender, recipient: expert, state: 'pending') }
 
   context 'expert can answer' do
     before do
@@ -14,11 +15,15 @@ RSpec.feature 'Users can answer questions' do
     end
 
     scenario 'correctly' do
-      fill_in 'Answer', with: 'First answer'
+      fill_in 'Answer', with: 'First answer woo'
       click_button 'Create Answer'
   
       expect(page).to have_content 'Answer has been created.'
-      expect(page).to have_content 'First answer'
+      expect(page).to have_content 'First answer woo'
+      expect(page).to have_content 'State: completed'
+      # within('.answer #state') do
+      #   expect(page).to have_content 'Complete'
+      # end
     end
 
     scenario 'but not with an invalid answer' do
