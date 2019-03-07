@@ -1,22 +1,20 @@
-body{
-    font-family: $main-font;
-}
-
 .global-container{
-    max-width: 1280px;
-    margin: 0 auto;
+  max-width: 1280px;
+  margin: 0 auto;
 }
 main{
-    margin: 0 55px;
+  margin: 0 55px;
 }
 
 .question{
-    border: black solid 1px;
-    padding: 10px;
-    margin: 10px 10px 5px;
+  // border: rgba(30, 30, 30, 0.3) solid 1px;
+  // border-radius: 3px;
+  // padding: 8px;
+  margin: 28px 0px;
+
 }
 
 .strong{
-    font-weight: bold;
-    display: inline;
+  font-weight: bold;
+  display: inline;
 }

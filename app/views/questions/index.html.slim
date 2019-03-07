@@ -1,12 +1,15 @@
-h1 Questions
+h1 Latest Questions
 - @questions.each do |question|
   .question
+    h4= link_to question.query, question
     p
-    strong Q: 
-    = link_to question.query, question
-    p 
     strong To: 
-    = question.recipient.email
+    = question.recipient.name
     p
     strong Amount: 
     = number_to_currency(question.price)
+    - if !question.answer.nil?
+        p =truncate(question.answer.response, length: 100,
+          separator: ' '){ link_to "(read more)", question_path(question) }
+    - else
+      p This question hasn't been answered yet.

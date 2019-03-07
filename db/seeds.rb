@@ -11,7 +11,7 @@ unless User.exists?(email: 'admin@thyscholar.com')
 end
 
 unless User.exists?(email: 'alexanderjshopov@gmail.com')
-  User.create!(email: 'admin@thyscholar.com', name: 'Alex Shopov', password: 'password')
+  User.create!(email: 'alexanderjshopov@gmail.com', name: 'Alex Shopov', password: 'password')
 end
 
 # create random users
