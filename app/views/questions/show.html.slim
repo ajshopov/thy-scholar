@@ -1,12 +1,11 @@
 h2= @question.query
-p To #{@question.recipient.name}
-p From #{@question.sender.name}
+p To 
+= link_to @question.recipient.name, @question.recipient
+p From 
+= link_to @question.sender.name, @question.sender
 p #{@question.state} for #{number_to_currency(@question.price)}
 
-<header>
-  <h3>Answer</h3>
-</header>
-
+h3 Answer
 
 - if @question.recipient == current_user && @question.answer.response.nil?
   = link_to ">Answer this question<", new_question_answer_path(@question)

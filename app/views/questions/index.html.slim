@@ -4,7 +4,7 @@ h1 Latest Questions
     h4= link_to question.query, question
     p
     strong To: 
-    = question.recipient.name
+    = link_to question.recipient.name, user_path(question.recipient)
     p
     strong Amount: 
     = number_to_currency(question.price)

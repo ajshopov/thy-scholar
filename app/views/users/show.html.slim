@@ -1,4 +1,4 @@
-h1 User Profile for #{@user.name}
+h1 #{@user.name}
 
 p recipient id: #{@user.id}
 - if current_user
@@ -10,24 +10,24 @@ p recipient id: #{@user.id}
 - elsif user_signed_in?
   = render "questions/form", question: @question
 
-h4 Questions you've answered
+h2 Questions you've answered
 - @user.is_recipient_for.each do |question|
   .question
-    p 
-    strong Q: 
-    = link_to question.query, question
+    h4= link_to question.query, question
     p
-    strong FROM:
+      strong From: 
+      = link_to question.sender.name, question.sender
     p
-    strong Amount:
+      strong Amount: 
+      = number_to_currency(question.price)
 
-h4 Questions you've asked
+h2 Questions you've asked
 - @user.is_sender_for.each do |question|
   .question
-    p 
-    strong Q: 
-    = link_to question.query, question
+    h4= link_to question.query, question
     p
-    strong TO:
+      strong To: 
+      = link_to question.recipient.name, question.recipient
     p
-    strong Amount:
+      strong Amount: 
+      = number_to_currency(question.price)

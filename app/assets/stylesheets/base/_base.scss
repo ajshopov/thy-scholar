@@ -30,7 +30,7 @@ a {
 
   @include on-event {
     color: $text-color;
-    text-decoration: none;
+    text-decoration: underline;
   }
 }
 
