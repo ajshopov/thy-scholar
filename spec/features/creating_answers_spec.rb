@@ -13,14 +13,18 @@ RSpec.feature 'Users can answer questions' do
       visit question_path(question)
       click_link 'Answer this question'
     end
-
-    scenario 'correctly' do
+    
+    # scenario 'reject question' do
+    #   click_link 'Reject question'
+    # end
+    
+    scenario 'accepts question' do
       fill_in 'Answer', with: 'First answer woo'
       click_button 'Create Answer'
   
       expect(page).to have_content 'Answer has been created.'
       expect(page).to have_content 'First answer woo'
-      expect(page).to have_content 'State: completed'
+      expect(page).to have_content 'completed'
       # within('.answer #state') do
       #   expect(page).to have_content 'Complete'
       # end

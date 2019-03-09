@@ -28,7 +28,7 @@ html
           li
             = link_to "Sign In", new_user_session_path
     - flash.each do |key, message|
-      = message
+      = content_tag :p, message, class: key
     .global-container
       main class=[controller.controller_name]
         == yield
