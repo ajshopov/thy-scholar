@@ -9,8 +9,11 @@ h3 Answer
 
 - if @question.recipient == current_user && @question.answer.response.nil?
   = link_to ">Answer this question<", new_question_answer_path(@question)
+  = link_to "Accept", accept_question_path(@question), method: :post
 
 - if @question.answer.response
   = @question.answer.response
 - else
   p Hasn't been answered yet
+
+= render "charges/charge", question: @question

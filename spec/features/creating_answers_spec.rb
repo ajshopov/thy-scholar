@@ -11,6 +11,7 @@ RSpec.feature 'Users can answer questions' do
     before do
       login_as(expert)
       visit question_path(question)
+      click_link 'Accept'
       click_link 'Answer this question'
     end
     
@@ -21,7 +22,7 @@ RSpec.feature 'Users can answer questions' do
     scenario 'accepts question' do
       fill_in 'Answer', with: 'First answer woo'
       click_button 'Create Answer'
-  
+      
       expect(page).to have_content 'Answer has been created.'
       expect(page).to have_content 'First answer woo'
       expect(page).to have_content 'completed'

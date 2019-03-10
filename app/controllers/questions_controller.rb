@@ -14,6 +14,15 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def accept
+    @question = Question.find(params[:id])
+    @question.state = 'accepted'
+    # byebug
+    @question.save!
+    flash[:notice] = 'You have accepted this question. Sender has been notified'
+    redirect_to question_path(@question)
+  end
+
   def new
     @question = Question.new
   end
