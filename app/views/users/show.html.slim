@@ -7,6 +7,7 @@ p recipient id: #{@user.id}
 - if @user == current_user
   = link_to "Edit your details", edit_user_registration_path
   p This is your profile, answer questions here
+  / a href="https://connect.stripe.com/oauth/authorize?response_type=code&client_id=ca_E5KTFLvu8l29sassk8xMSud4CqjcDmg1&scope=read_write" Connect to Stripe 
 - elsif user_signed_in?
   = render "questions/form", question: @question
 

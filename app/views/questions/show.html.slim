@@ -7,9 +7,10 @@ p #{@question.state} for #{number_to_currency(@question.price)}
 
 h3 Answer
 
-- if @question.recipient == current_user && @question.answer.response.nil?
-  = link_to ">Answer this question<", new_question_answer_path(@question)
+- if @question.recipient == current_user && @question.state == 'pending'
   = link_to "Accept", accept_question_path(@question), method: :post
+- if @question.recipient == current_user && @question.state == 'accepted'
+  = link_to ">Answer this question<", new_question_answer_path(@question)
 
 - if @question.answer.response
   = @question.answer.response
