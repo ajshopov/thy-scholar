@@ -6,8 +6,9 @@ p recipient id: #{@user.id}
 
 - if @user == current_user
   = link_to "Edit your details", edit_user_registration_path
-  p This is your profile, answer questions here
+  p Click the link below to connect a Stripe account and start answering questions.
   = link_to "Connect to Stripe", stripe_url
+  p stripe_acct: #{@user.stripe_id}
 - elsif user_signed_in?
   = render "questions/form", question: @question
 

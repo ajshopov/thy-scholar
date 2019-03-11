@@ -7,12 +7,10 @@ RSpec.feature 'Users can answer questions' do
   let(:question) { FactoryBot.create(:question,
     sender: sender, recipient: expert, state: 'pending') }
 
-  context 'expert can answer' do
+  context 'state change' do
     before do
       login_as(expert)
       visit question_path(question)
-      click_link 'Accept'
-      click_link 'Answer this question'
     end
     
     # scenario 'reject question' do
@@ -20,6 +18,21 @@ RSpec.feature 'Users can answer questions' do
     # end
     
     scenario 'accepts question' do
+      click_link 'Accept'
+      
+      expect(page).to have_content 'accepted'
+    end
+  end
+
+  context 'expert can answer questions' do
+    before do
+      login_as(expert)
+      visit question_path(question)
+      click_link 'Accept'
+      click_link 'Answer this question'
+    end
+
+    scenario 'provide ana answer' do
       fill_in 'Answer', with: 'First answer woo'
       click_button 'Create Answer'
       

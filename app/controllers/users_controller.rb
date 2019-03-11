@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all
+    @experts = User.expert
+    @customers = User.customer
   end
 
   def show
