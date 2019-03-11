@@ -3,6 +3,8 @@ class ChargesController < ApplicationController
   end
 
   def create
+    # byebug
+    @question = Question.find(params[:question_id])
     # Amount in cents
     @amount = 500
 
@@ -13,11 +15,11 @@ class ChargesController < ApplicationController
 
     charge = Stripe::Charge.create({
       amount: @amount,
+      application_fee_amount: 100,
       description: 'Rails Stripe customer',
       currency: 'usd',
       source: params[:stripeToken]
-      },
-      user.stripe_access_key
+      }, stripe_account: @question.recipient.stripe_id
     )
 
   rescue Stripe::CardError => e
