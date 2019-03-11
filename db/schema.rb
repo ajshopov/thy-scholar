@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_11_080617) do
+ActiveRecord::Schema.define(version: 2019_03_11_093656) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,8 +27,10 @@ ActiveRecord::Schema.define(version: 2019_03_11_080617) do
 
   create_table "charges", force: :cascade do |t|
     t.bigint "question_id"
-    t.string "stripe_id"
     t.boolean "paid", default: false
+    t.decimal "total"
+    t.decimal "fee_charged"
+    t.string "stripe_charge_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["question_id"], name: "index_charges_on_question_id"

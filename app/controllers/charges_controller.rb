@@ -5,7 +5,7 @@ class ChargesController < ApplicationController
   def create
     # byebug
     @question = Question.find(params[:question_id])
-
+    @charge = Charge.create(question: @question)
     # Amount in cents
     @amount = 500
 
@@ -20,7 +20,7 @@ class ChargesController < ApplicationController
 
     # save customer.id to database?
 
-    charge = Stripe::Charge.create({
+    transaction = Stripe::Charge.create({
       amount: @amount,
       application_fee_amount: 100,
       currency: 'usd',
@@ -28,6 +28,14 @@ class ChargesController < ApplicationController
       }, stripe_account: @question.recipient.stripe_id
     )
     # byebug
+    if transaction.paid?
+      @charge.paid = transaction.paid
+      @charge.total = transaction.amount
+      @charge.fee_charged = transaction.application_fee_amount
+      @charge.stripe_charge_id = transaction.id
+      @charge.save!
+    end
+
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to new_charge_path

@@ -50,6 +50,7 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails', '~> 5.0', '>= 5.0.1'
   gem 'rspec-rails', '~> 3.8', '>= 3.8.2'
+  gem 'stripe-ruby-mock', '~> 2.5.6', :require => 'stripe_mock'
 end
 
 group :development do
