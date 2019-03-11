@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_10_034124) do
+ActiveRecord::Schema.define(version: 2019_03_11_080617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(version: 2019_03_10_034124) do
     t.datetime "updated_at", null: false
     t.index ["question_id"], name: "index_answers_on_question_id", unique: true
     t.index ["user_id"], name: "index_answers_on_user_id"
+  end
+
+  create_table "charges", force: :cascade do |t|
+    t.bigint "question_id"
+    t.string "stripe_id"
+    t.boolean "paid", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_charges_on_question_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -50,12 +59,14 @@ ActiveRecord::Schema.define(version: 2019_03_10_034124) do
     t.string "stripe_access_key"
     t.string "stripe_publishable_key"
     t.string "stripe_refresh_token"
+    t.string "stripe_customer_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "users"
+  add_foreign_key "charges", "questions"
   add_foreign_key "questions", "users", column: "recipient_id"
   add_foreign_key "questions", "users", column: "sender_id"
 end

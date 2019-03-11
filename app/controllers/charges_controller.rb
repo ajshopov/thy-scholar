@@ -5,6 +5,7 @@ class ChargesController < ApplicationController
   def create
     # byebug
     @question = Question.find(params[:question_id])
+
     # Amount in cents
     @amount = 500
 
@@ -16,6 +17,8 @@ class ChargesController < ApplicationController
     token = Stripe::Token.create({
       :customer => customer.id,
     }, {:stripe_account => @question.recipient.stripe_id})
+
+    # save customer.id to database?
 
     charge = Stripe::Charge.create({
       amount: @amount,

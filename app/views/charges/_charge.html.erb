@@ -6,13 +6,13 @@
       </div>
     <% end %>
     <label class="amount">
-      <span>Amount: $5.00</span>
+      <span>Amount: <%= number_to_currency(@question.price) %></span>
     </label>
   </article>
 
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= ENV['PUBLISHABLE_KEY'] %>"
-          data-description="A month's subscription"
-          data-amount="500"
+          data-email="<%= @question.sender.email %>"
+          data-description="Thy Scholar Payment"
           data-locale="auto"></script>
 <% end %>
