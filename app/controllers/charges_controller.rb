@@ -3,20 +3,38 @@ class ChargesController < ApplicationController
   end
 
   def create
+    # byebug
+    @question = Question.find(params[:question_id])
+    @charge = Charge.create(question: @question)
     # Amount in cents
     @amount = 500
 
     customer = Stripe::Customer.create({
       email: params[:stripeEmail],
-      source: params[:stripeToken],
+      source: params[:stripeToken]
     })
 
-    charge = Stripe::Charge.create({
-      customer: customer.id,
+    token = Stripe::Token.create({
+      :customer => customer.id,
+    }, {:stripe_account => @question.recipient.stripe_id})
+
+    # save customer.id to database?
+
+    transaction = Stripe::Charge.create({
       amount: @amount,
-      description: 'Rails Stripe customer',
+      application_fee_amount: 100,
       currency: 'usd',
-    })
+      source: token.id
+      }, stripe_account: @question.recipient.stripe_id
+    )
+    # byebug
+    if transaction.paid?
+      @charge.paid = transaction.paid
+      @charge.total = transaction.amount
+      @charge.fee_charged = transaction.application_fee_amount
+      @charge.stripe_charge_id = transaction.id
+      @charge.save!
+    end
 
   rescue Stripe::CardError => e
     flash[:error] = e.message

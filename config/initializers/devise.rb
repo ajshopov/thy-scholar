@@ -10,6 +10,13 @@ Devise.setup do |config|
   # by default. You can change it below and use your own secret key.
   # config.secret_key = 'fcf5c4a28964c20a45d142b1a0bac4d0ebb3c1b088690ca6a70af7d514c55b2b81e01e9fd490c42b36177f917197bb376141a531a4c582fa642614a7c0d01073'
 
+  # Stripe Config
+  config.omniauth :stripe_connect,
+    ENV['CLIENT_ID'],
+    ENV['SECRET_KEY'],
+    scope: 'read_write',
+    stripe_landing: 'login'
+
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
