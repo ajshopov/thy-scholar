@@ -8,20 +8,23 @@ class ChargesController < ApplicationController
     # Amount in cents
     @amount = 500
 
-    # customer = Stripe::Customer.create({
-    #   email: params[:stripeEmail],
-    #   source: params[:stripeToken],
-    # })
+    customer = Stripe::Customer.create({
+      email: params[:stripeEmail],
+      source: params[:stripeToken]
+    })
+
+    token = Stripe::Token.create({
+      :customer => customer.id,
+    }, {:stripe_account => @question.recipient.stripe_id})
 
     charge = Stripe::Charge.create({
       amount: @amount,
       application_fee_amount: 100,
-      description: 'Rails Stripe customer',
       currency: 'usd',
-      source: params[:stripeToken]
+      source: token.id
       }, stripe_account: @question.recipient.stripe_id
     )
-
+    # byebug
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to new_charge_path
