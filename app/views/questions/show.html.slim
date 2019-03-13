@@ -14,7 +14,7 @@ h3 Answer
     = link_to ">Answer this question<", new_question_answer_path(@question)
 
 - if @question.answer.response
-  = @question.answer.response
+  = sanitize @question.answer.response
 - else
   p Hasn't been answered yet
 

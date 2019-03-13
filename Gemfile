@@ -41,6 +41,7 @@ gem 'simple_form', '~> 4.1'
 gem 'slim', '~> 4.0', '>= 4.0.1'
 gem 'stripe', '~> 4.9'
 gem 'omniauth-stripe-connect', '~> 2.10', '>= 2.10.1'
+gem 'trix-rails', '~> 2.0', require: 'trix'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
