@@ -1,4 +1,4 @@
-h1 Latest Questions
+/ h1 Latest Questions
 - @questions.each do |question|
   .question
     h4= link_to question.query, question
@@ -9,7 +9,7 @@ h1 Latest Questions
     strong Amount: 
     = number_to_currency(question.price)
     - if !question.answer.nil?
-        p =truncate(question.answer.response, length: 100,
+        p =truncate(strip_tags(question.answer.response), length: 100,
           separator: ' '){ link_to "(read more)", question_path(question) }
     - else
       p This question hasn't been answered yet.

@@ -37,7 +37,8 @@ class QuestionsController < ApplicationController
       redirect_to @question
     else
       flash.now[:alert] = 'Question has not been created.'
-      render 'new'
+      @user = @question.recipient
+      render 'users/show'
     end
   end
 
