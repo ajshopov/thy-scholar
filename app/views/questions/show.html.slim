@@ -1,22 +1,25 @@
-h2= @question.query
-p To 
-= link_to @question.recipient.name, @question.recipient
-p From 
-= link_to @question.sender.name, @question.sender
-p #{@question.state} for #{number_to_currency(@question.price)}
+.question
+  h3= @question.query
+  / p From 
+  / = link_to @question.sender.name, @question.sender
+  - if @question.state == 'completed'
+    p
+      | Answered by 
+      = link_to @question.recipient.name, @question.recipient
+    p.price= number_to_currency(@question.price)
+  - else
+    p #{@question.state} for #{number_to_currency(@question.price)}
 
-h3 Answer
+  - if @question.recipient == current_user
+    - if @question.state == 'pending'
+      = link_to "Accept", accept_question_path(@question), method: :post
+    - if @question.state == 'accepted'
+      = link_to ">Answer this question<", new_question_answer_path(@question)
 
-- if @question.recipient == current_user
-  - if @question.state == 'pending'
-    = link_to "Accept", accept_question_path(@question), method: :post
-  - if @question.state == 'accepted'
-    = link_to ">Answer this question<", new_question_answer_path(@question)
+  - if @question.answer.response
+    .trix-content= sanitize(@question.answer.response)
+  - else
+    p This question has not been answered yet.
 
-- if @question.answer.response
-  = sanitize @question.answer.response
-- else
-  p Hasn't been answered yet
-
-- if @question.sender == current_user && @question.state == 'accepted'
-  = render "charges/charge", question: @question
+  - if @question.sender == current_user && @question.state == 'accepted'
+    = render "charges/charge", question: @question
