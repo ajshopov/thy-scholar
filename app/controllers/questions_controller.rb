@@ -2,7 +2,7 @@ class QuestionsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
 
   def index
-    @questions = Question.order(updated_at: :desc)
+    @questions = Question.order(updated_at: :desc).page(params[:page]).per(10)
   end
 
   def show

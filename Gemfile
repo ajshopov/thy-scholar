@@ -37,6 +37,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'devise', '~> 4.6', '>= 4.6.1'
 gem 'faker', '~> 1.9', '>= 1.9.3'
+gem 'kaminari', '~> 1.1', '>= 1.1.1'
 gem 'simple_form', '~> 4.1'
 gem 'slim', '~> 4.0', '>= 4.0.1'
 gem 'stripe', '~> 4.9'
