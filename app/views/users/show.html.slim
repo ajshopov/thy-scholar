@@ -4,6 +4,9 @@ p recipient id: #{@user.id}
 - if current_user
   p sender id: #{current_user.id}
 
+- unless @user.profile_pic.file.nil?
+  .image= image_tag @user.profile_pic_url
+
 - if @user == current_user
   = link_to "Edit your details", edit_user_registration_path
   p Click the link below to connect a Stripe account and start answering questions.

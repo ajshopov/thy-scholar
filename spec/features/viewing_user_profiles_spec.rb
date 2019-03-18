@@ -10,7 +10,7 @@ RSpec.feature "Users can view" do
 
   scenario "their own profile" do
     visit '/users'
-    click_link "#{user.email}"
+    click_link "#{user.name}"
 
     expect(page.current_url).to eq user_url(user)
   end
