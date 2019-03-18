@@ -1,0 +1,22 @@
+<%= simple_form_for :search, url: @users_path, method: "GET" do |f| %>
+  <%= f.input :name, input_html: {value: ""} %>
+  <%= f.submit "Search" %>
+<% end %>
+
+<ul>
+  <% @users.each do |user| %>
+    <li><%= user.name %></li>
+  <% end %>
+</ul>
+
+<%# / h1 User List
+/ h4 Experts (have linked Stripe Accounts)
+/ ul
+/   - @experts.each do |user|
+/     li
+/       = link_to user.name, user
+/ h4 All Other Users
+ul
+  - @users.each do |user|
+    li
+      = link_to user.name, user %>

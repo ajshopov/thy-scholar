@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
   def index
-    @experts = User.expert
-    @customers = User.customer
+    @users = User.all
+    @search = params["search"]
+    if @search.present?
+      @name = @search["name"]
+      @users = User.where("name ILIKE ?", "%#{@name}%")
+    end
   end
 
   def show
