@@ -25,7 +25,19 @@
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
 
-    <%= f.input :profile_pic, as: :file, label: "Upload a Profile Picture" %>
+    <%# <%= f.input :profile_pic, as: :file, label: "Upload a Profile Picture (use a square image)" %>
+    <p>
+      <label>My Avatar</label>
+      <%= image_tag(@user.profile_pic_url) if @user.profile_pic? %>
+      <%= f.file_field :profile_pic %>
+    </p>
+
+    <p>
+      <label>
+        <%= f.check_box :remove_profile_pic %>
+        Remove avatar
+      </label>
+    </p>
   </div>
 
   <div class="form-actions">

@@ -4,7 +4,8 @@ p recipient id: #{@user.id}
 - if current_user
   p sender id: #{current_user.id}
 
-- unless @user.profile_pic.file.nil?
+- if @user.profile_pic.present?
+  .image= image_tag @user.profile_pic_url(:thumb)
   .image= image_tag @user.profile_pic_url
 
 - if @user == current_user

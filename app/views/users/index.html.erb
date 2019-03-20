@@ -5,7 +5,12 @@
 
 <ul>
   <% @users.each do |user| %>
-    <li><%= link_to user.name, user %></li>
+    <li>
+      <% if user.profile_pic.present? %>
+        <%= image_tag user.profile_pic_url(:thumb) %>
+      <% end %>
+      <%= link_to user.name, user %>
+    </li>
   <% end %>
 </ul>
 

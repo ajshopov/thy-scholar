@@ -35,10 +35,10 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'carrierwave', '~> 1.3', '>= 1.3.1'
-gem 'dotenv-rails', groups: [:development, :test]
 gem 'devise', '~> 4.6', '>= 4.6.1'
 gem 'faker', '~> 1.9', '>= 1.9.3'
 gem 'kaminari', '~> 1.1', '>= 1.1.1'
+gem 'mini_magick', '~> 4.9', '>= 4.9.3'
 gem 'simple_form', '~> 4.1'
 gem 'slim', '~> 4.0', '>= 4.0.1'
 gem 'stripe', '~> 4.9'
@@ -51,6 +51,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'dotenv-rails'
   gem 'factory_bot_rails', '~> 5.0', '>= 5.0.1'
   gem 'rspec-rails', '~> 3.8', '>= 3.8.2'
   gem 'stripe-ruby-mock', '~> 2.5.6', :require => 'stripe_mock'

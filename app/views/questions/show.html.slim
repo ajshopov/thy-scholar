@@ -5,6 +5,8 @@
   - if @question.state == 'completed'
     p
       | Answered by 
+    - if @question.recipient.profile_pic.present?
+      .image= image_tag @question.recipient.profile_pic_url(:thumb)
       = link_to @question.recipient.name, @question.recipient
     p.price= number_to_currency(@question.price)
   - else
