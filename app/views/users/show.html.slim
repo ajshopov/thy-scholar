@@ -4,9 +4,7 @@ p recipient id: #{@user.id}
 - if current_user
   p sender id: #{current_user.id}
 
-- if @user.profile_pic.present?
-  .image= image_tag @user.profile_pic_url(:thumb)
-  .image= image_tag @user.profile_pic_url
+.image= image_tag check_avatar(@user)
 
 - if @user == current_user
   = link_to "Edit your details", edit_user_registration_path

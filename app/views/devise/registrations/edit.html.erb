@@ -33,10 +33,12 @@
     </p>
 
     <p>
-      <label>
-        <%= f.check_box :remove_profile_pic %>
-        Remove avatar
-      </label>
+      <% if @user.profile_pic?  %>
+        <label>
+          <%= f.check_box :remove_profile_pic %>
+          Remove avatar
+        </label>
+      <% end %>
     </p>
   </div>
 
