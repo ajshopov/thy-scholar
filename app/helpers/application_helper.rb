@@ -7,13 +7,19 @@ module ApplicationHelper
     yield if current_user.try(:stripe_id?)
   end
 
-  def check_avatar(user)
+  def profile_pic(user)
     if user.profile_pic.present?
-      #return user avatar
+      user.profile_pic_url
+    else
+      "fallback/default.png"
+    end
+  end
+
+    def profile_pic_thumb(user)
+    if user.profile_pic.present?
       user.profile_pic_url(:thumb)
     else
-      # return default image
-      "fallback/default.png"
+      "fallback/thumb_default.png"
     end
   end
 end
