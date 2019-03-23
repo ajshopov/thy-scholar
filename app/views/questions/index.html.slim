@@ -2,7 +2,7 @@
 - @questions.each do |question|
   .question
     h4= link_to question.query, question
-    p
+    p.image= image_tag question.recipient.profile_pic_url(:thumb)
     strong To: 
     = link_to question.recipient.name, user_path(question.recipient)
     p
