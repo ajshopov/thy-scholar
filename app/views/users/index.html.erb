@@ -1,7 +1,9 @@
-<%= simple_form_for :search, url: @users_path, method: "GET" do |f| %>
-  <%= f.input :name, input_html: {value: ""} %>
-  <%= f.submit "Search" %>
-<% end %>
+<div class="search-bar">
+  <%= simple_form_for :search, url: @users_path, method: "GET" do |f| %>
+    <%= f.input :name, input_html: {value: ""} %>
+    <%= f.submit "Search" %>
+  <% end %>
+</div>
 
 <ul class="users-list">
   <% @users.each do |user| %>
