@@ -14,6 +14,12 @@ h1 #{@user.name}
 - elsif user_signed_in?
   = render "questions/form", question: @question
 
+= link_to 'New Lecture', new_lecture_path
+
+h2 Your Lectures
+- @user.posted_lectures.each do |lecture|
+  p= sanitize(lecture.content)
+
 h2 Questions you've answered
 - @user.is_recipient_for.each do |question|
   .question
