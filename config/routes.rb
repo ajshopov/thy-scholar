@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     :registrations => :registrations
   }
   resources :users, only: [:show, :index]
-  root 'questions#index'
+  root 'pages#search'
   resources :questions do
     resources :answers, only: [:create, :new]
     resources :charges, only: [:create, :new]

@@ -11,6 +11,8 @@ html
     nav
       ul
         li= link_to "Home", root_path
+        li= link_to "Lectures", lectures_path
+        li= link_to "Questions", questions_path
         li= link_to "User List", users_path
         li= link_to "About", about_path
         - if user_signed_in?
