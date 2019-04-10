@@ -1,5 +1,9 @@
 require 'rails_helper'
 
+Capybara.register_driver :selenium do |app|
+  Capybara::Selenium::Driver.new(app, browser: :chrome)
+end
+
 RSpec.feature 'Users can answer questions' do
   let(:sender) { FactoryBot.create(:user) }
   let(:other) { FactoryBot.create(:user) }
@@ -32,8 +36,8 @@ RSpec.feature 'Users can answer questions' do
       click_link 'Answer this question'
     end
 
-    scenario 'provide ana answer' do
-      fill_in 'Answer', with: 'First answer woo'
+    scenario 'provide an answer', js: true do
+      find('trix-editor').click.set('First answer woo')
       click_button 'Create Answer'
       
       expect(page).to have_content 'Answer has been created.'

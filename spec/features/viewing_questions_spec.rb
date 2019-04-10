@@ -7,7 +7,7 @@ RSpec.feature 'Users can view questions' do
     question = FactoryBot.create(:question, query: 'Testing out',
       sender: sender, recipient: recipient)
 
-    visit '/'
+    visit questions_path
     click_link 'Testing out'
     expect(page.current_url).to eq question_url(question)
   end

@@ -23,119 +23,119 @@ require 'rails_helper'
 # removed from Rails core in Rails 5, but can be added back in via the
 # `rails-controller-testing` gem.
 
-RSpec.describe LecturesController, type: :controller do
+# RSpec.describe LecturesController, type: :controller do
 
-  # This should return the minimal set of attributes required to create a valid
-  # Lecture. As you add validations to Lecture, be sure to
-  # adjust the attributes here as well.
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
-  }
+#   # This should return the minimal set of attributes required to create a valid
+#   # Lecture. As you add validations to Lecture, be sure to
+#   # adjust the attributes here as well.
+#   let(:valid_attributes) {
+#     skip("Add a hash of attributes valid for your model")
+#   }
 
-  let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
-  }
+#   let(:invalid_attributes) {
+#     skip("Add a hash of attributes invalid for your model")
+#   }
 
-  # This should return the minimal set of values that should be in the session
-  # in order to pass any filters (e.g. authentication) defined in
-  # LecturesController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+#   # This should return the minimal set of values that should be in the session
+#   # in order to pass any filters (e.g. authentication) defined in
+#   # LecturesController. Be sure to keep this updated too.
+#   let(:valid_session) { {} }
 
-  describe "GET #index" do
-    it "returns a success response" do
-      Lecture.create! valid_attributes
-      get :index, params: {}, session: valid_session
-      expect(response).to be_successful
-    end
-  end
+#   describe "GET #index" do
+#     it "returns a success response" do
+#       Lecture.create! valid_attributes
+#       get :index, params: {}, session: valid_session
+#       expect(response).to be_successful
+#     end
+#   end
 
-  describe "GET #show" do
-    it "returns a success response" do
-      lecture = Lecture.create! valid_attributes
-      get :show, params: {id: lecture.to_param}, session: valid_session
-      expect(response).to be_successful
-    end
-  end
+#   describe "GET #show" do
+#     it "returns a success response" do
+#       lecture = Lecture.create! valid_attributes
+#       get :show, params: {id: lecture.to_param}, session: valid_session
+#       expect(response).to be_successful
+#     end
+#   end
 
-  describe "GET #new" do
-    it "returns a success response" do
-      get :new, params: {}, session: valid_session
-      expect(response).to be_successful
-    end
-  end
+#   describe "GET #new" do
+#     it "returns a success response" do
+#       get :new, params: {}, session: valid_session
+#       expect(response).to be_successful
+#     end
+#   end
 
-  describe "GET #edit" do
-    it "returns a success response" do
-      lecture = Lecture.create! valid_attributes
-      get :edit, params: {id: lecture.to_param}, session: valid_session
-      expect(response).to be_successful
-    end
-  end
+#   describe "GET #edit" do
+#     it "returns a success response" do
+#       lecture = Lecture.create! valid_attributes
+#       get :edit, params: {id: lecture.to_param}, session: valid_session
+#       expect(response).to be_successful
+#     end
+#   end
 
-  describe "POST #create" do
-    context "with valid params" do
-      it "creates a new Lecture" do
-        expect {
-          post :create, params: {lecture: valid_attributes}, session: valid_session
-        }.to change(Lecture, :count).by(1)
-      end
+#   describe "POST #create" do
+#     context "with valid params" do
+#       it "creates a new Lecture" do
+#         expect {
+#           post :create, params: {lecture: valid_attributes}, session: valid_session
+#         }.to change(Lecture, :count).by(1)
+#       end
 
-      it "redirects to the created lecture" do
-        post :create, params: {lecture: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(Lecture.last)
-      end
-    end
+#       it "redirects to the created lecture" do
+#         post :create, params: {lecture: valid_attributes}, session: valid_session
+#         expect(response).to redirect_to(Lecture.last)
+#       end
+#     end
 
-    context "with invalid params" do
-      it "returns a success response (i.e. to display the 'new' template)" do
-        post :create, params: {lecture: invalid_attributes}, session: valid_session
-        expect(response).to be_successful
-      end
-    end
-  end
+#     context "with invalid params" do
+#       it "returns a success response (i.e. to display the 'new' template)" do
+#         post :create, params: {lecture: invalid_attributes}, session: valid_session
+#         expect(response).to be_successful
+#       end
+#     end
+#   end
 
-  describe "PUT #update" do
-    context "with valid params" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
+#   describe "PUT #update" do
+#     context "with valid params" do
+#       let(:new_attributes) {
+#         skip("Add a hash of attributes valid for your model")
+#       }
 
-      it "updates the requested lecture" do
-        lecture = Lecture.create! valid_attributes
-        put :update, params: {id: lecture.to_param, lecture: new_attributes}, session: valid_session
-        lecture.reload
-        skip("Add assertions for updated state")
-      end
+#       it "updates the requested lecture" do
+#         lecture = Lecture.create! valid_attributes
+#         put :update, params: {id: lecture.to_param, lecture: new_attributes}, session: valid_session
+#         lecture.reload
+#         skip("Add assertions for updated state")
+#       end
 
-      it "redirects to the lecture" do
-        lecture = Lecture.create! valid_attributes
-        put :update, params: {id: lecture.to_param, lecture: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(lecture)
-      end
-    end
+#       it "redirects to the lecture" do
+#         lecture = Lecture.create! valid_attributes
+#         put :update, params: {id: lecture.to_param, lecture: valid_attributes}, session: valid_session
+#         expect(response).to redirect_to(lecture)
+#       end
+#     end
 
-    context "with invalid params" do
-      it "returns a success response (i.e. to display the 'edit' template)" do
-        lecture = Lecture.create! valid_attributes
-        put :update, params: {id: lecture.to_param, lecture: invalid_attributes}, session: valid_session
-        expect(response).to be_successful
-      end
-    end
-  end
+#     context "with invalid params" do
+#       it "returns a success response (i.e. to display the 'edit' template)" do
+#         lecture = Lecture.create! valid_attributes
+#         put :update, params: {id: lecture.to_param, lecture: invalid_attributes}, session: valid_session
+#         expect(response).to be_successful
+#       end
+#     end
+#   end
 
-  describe "DELETE #destroy" do
-    it "destroys the requested lecture" do
-      lecture = Lecture.create! valid_attributes
-      expect {
-        delete :destroy, params: {id: lecture.to_param}, session: valid_session
-      }.to change(Lecture, :count).by(-1)
-    end
+#   describe "DELETE #destroy" do
+#     it "destroys the requested lecture" do
+#       lecture = Lecture.create! valid_attributes
+#       expect {
+#         delete :destroy, params: {id: lecture.to_param}, session: valid_session
+#       }.to change(Lecture, :count).by(-1)
+#     end
 
-    it "redirects to the lectures list" do
-      lecture = Lecture.create! valid_attributes
-      delete :destroy, params: {id: lecture.to_param}, session: valid_session
-      expect(response).to redirect_to(lectures_url)
-    end
-  end
+#     it "redirects to the lectures list" do
+#       lecture = Lecture.create! valid_attributes
+#       delete :destroy, params: {id: lecture.to_param}, session: valid_session
+#       expect(response).to redirect_to(lectures_url)
+#     end
+#   end
 
-end
+# end
