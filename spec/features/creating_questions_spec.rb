@@ -25,8 +25,8 @@ RSpec.feature 'Users can create new questions' do
       click_button 'Create Question'
 
       expect(page).to have_content 'Question has been created.'
-      expect(page).to have_content "From\n#{sender.name}"
-      expect(page).to have_content "To\n#{expert.name}"
+      expect(page).to have_content expert.name
+      expect(page).to have_content "$10.00"
       expect(page).to have_content "pending"
     end
 

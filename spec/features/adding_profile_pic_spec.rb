@@ -16,7 +16,7 @@ RSpec.feature 'Users can edit profile' do
     click_link "Edit your details"
 
     fill_in "Current password", with: "password"
-    attach_file "Upload a Profile Picture", Rails.root.join("public/uploads/user/profile_pic/2/tsar_wars.jpg")
+    attach_file("user[profile_pic]", Rails.root.join("public/uploads/user/profile_pic/2/tsar_wars.jpg"))
 
     click_button "Update"
 

@@ -1,5 +1,9 @@
 require 'rails_helper'
 
+Capybara.register_driver :selenium do |app|
+  Capybara::Selenium::Driver.new(app, browser: :chrome)
+end
+
 RSpec.feature 'Users can create new lectures' do
   let!(:user) { FactoryBot.create(:user) }
 
@@ -18,17 +22,18 @@ RSpec.feature 'Users can create new lectures' do
       visit user_path(user)
     end
 
-    # not set up for testing content presence ~~~~
-    # can't work out how to select trix-editor to fill_in
-    scenario 'with valid attributes' do
+
+    scenario 'with valid attributes', js: true do
       click_link "New Lecture"
       fill_in 'Title', with: 'The Known Unknown'
+      find('trix-editor').click.set("this is the lecture text")
       click_button 'Create Lecture'
 
       expect(page).to have_content 'Lecture was successfully created.'
       expect(page).to have_content "#{user.name}"
     end
 
+    # doesn't check for content presence, only title?
     scenario 'with invalid attributes' do
       click_link "New Lecture"
       click_button 'Create Lecture'
