@@ -34,6 +34,7 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'activeadmin', '~> 1.4', '>= 1.4.3'
 gem 'carrierwave', '~> 1.3', '>= 1.3.1'
 gem 'devise', '~> 4.6', '>= 4.6.1'
 gem 'faker', '~> 1.9', '>= 1.9.3'
