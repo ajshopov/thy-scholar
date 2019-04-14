@@ -41,3 +41,4 @@ end
 #     recipient: User.find(rand(2..User.last.id)),
 #     state: 'pending', price: rand(1..20))
 # end
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
