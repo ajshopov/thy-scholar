@@ -1,25 +1,37 @@
-h1 #{@user.name}
+.banner
+  = image_tag @user.profile_pic_url
+  .name-heading
+    h1 #{@user.name}
+    p 4.9 rating
+    button follow me
+
 
 / p recipient id: #{@user.id}
 / - if current_user
 /   p sender id: #{current_user.id}
 
-.image= image_tag @user.profile_pic_url
+h3 Bio
+p Mr Jordan J. Shopov is the company’s sole founder and Managing Director. Prior to Whig Capital, Jordan worked in a variety of roles across law, public policy, business and consulting. He attained both his Bachelor and Master of Laws from Monash University, and is admitted to practice law by the Supreme Court of South Australia.  
+
 
 - if @user == current_user
   = link_to "Edit your details", edit_user_registration_path
   p Click the link below to connect a Stripe account and start answering questions.
   = link_to "Connect to Stripe", stripe_url
   p stripe_acct: #{@user.stripe_id}
+  = link_to 'New Lecture', new_lecture_path
+  
 - elsif user_signed_in?
-  = render "questions/form", question: @question
+  .question-form
+    = render "questions/form", question: @question
 
-= link_to 'New Lecture', new_lecture_path
+
 
 h2 Your Lectures
 - @user.posted_lectures.each do |lecture|
-  h4= link_to lecture.title, lecture
-  p= sanitize(lecture.content)
+  .lecture
+    h4= link_to lecture.title, lecture
+    p= sanitize(lecture.content)
 
 h2 Questions you've answered
 - @user.is_recipient_for.each do |question|
