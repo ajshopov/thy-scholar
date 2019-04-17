@@ -3,8 +3,10 @@ nav{
   background-color: $light-grey;
   display: block;
   padding: 16px;
+  border-bottom: 1px solid black;
   li{
     display: inline;
+    font-weight: bold;
     // padding: 10px;
     a{
       padding: 16px;

@@ -1,4 +1,18 @@
 footer{
-  background-color: $light-grey;
   flex-shrink: 0;
+  border-top: 1px solid black;
+  text-align: center;
+  line-height: 28px;
+  ul{
+    margin: 28px;
+    display: block;
+    li{
+      display: inline;
+      padding: 0 20px;
+      font-weight: bold;
+    }
+  }
+  p{
+    margin: 28px;
+  }
 }
