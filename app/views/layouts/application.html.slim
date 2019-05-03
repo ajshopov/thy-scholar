@@ -2,13 +2,20 @@ doctype html
 html
   head
     title ThyScholar
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
   body
-    nav
+    h2=link_to "Thy Scholar", root_path
+    div.burger-holder
+      li.hamb= link_to("javascript:void(0);", :onclick => "burgerMenu(this)")
+        .bar1
+        .bar2
+        .bar3
+    nav#main_menu
       ul
         li= link_to "Home", root_path
         li= link_to "Lectures", lectures_path
