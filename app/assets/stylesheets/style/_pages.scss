@@ -22,8 +22,11 @@ main{
   margin: 1em auto;
 }
 
-.pages{
+.pages, .users{
   width: 600px;
+  h2{
+    margin: 1em 0 0.5em;
+  }
 }
 
 .question{
@@ -52,8 +55,15 @@ main{
 }
 
 .users-list{
+  li{
+    margin: 18px 0;
+  }
   img{
     border-radius: 50%;
+    margin-right: 5px;
+  }
+  img, a{
+    vertical-align: middle;
   }
 }
 
@@ -68,6 +78,9 @@ main{
 
 .search-bar{
   margin: 16px 0;
+  .search_name{
+    display: inline;
+  }
 }
 
 .banner{
