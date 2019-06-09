@@ -26,7 +26,7 @@ html
           li Logged in: #{current_user.name}
         - else
           li= link_to "Sign Up", new_user_registration_path
-          li= link_to "Sign In", new_user_session_path
+          li= link_to "Log In", new_user_session_path
     - flash.each do |key, message|
       = content_tag :p, message, class: key
     .global-container
