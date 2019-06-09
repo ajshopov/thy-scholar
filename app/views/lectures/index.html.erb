@@ -1,10 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Lectures</h1>
-  <% @lectures.each do |lecture| %>
-    <h4><%= link_to lecture.title, lecture %></h4>
-    <p><%= link_to lecture.user.name, user_path(lecture.user) %></p>
-    <p><%= sanitize(lecture.content) %></p>
-  <% end %>
+<h1>Articles</h1>
 
-<%= link_to 'New Lecture', new_lecture_path %>
+<%= link_to 'New Article', new_lecture_path %>
+
+<% @lectures.each do |lecture| %>
+  <div class="question">
+    <h4><%= link_to lecture.title, lecture %></h4>
+    <p><%= image_tag lecture.user.profile_pic_url(:thumb) %></p>
+    <p><%= link_to lecture.user.name, user_path(lecture.user) %></p>
+    <p><%= truncate(strip_tags(lecture.content), length: 200,
+      separator: ' '){ link_to "(read more)", lecture } %></p>
+  </div>
+<% end %>

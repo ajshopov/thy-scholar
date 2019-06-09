@@ -8,6 +8,10 @@ body{
   max-width: 1280px;
   margin: 0 auto;
   flex: 1 0 auto;
+  h1{
+    line-height: 80px;
+    margin: 0.25em 0;
+  }
 }
 main{
   margin: 0 55px;
@@ -18,14 +22,21 @@ main{
   margin: 1em auto;
 }
 
+.pages{
+  width: 600px;
+}
+
 .question{
   // border: rgba(30, 30, 30, 0.3) solid 1px;
   // border-radius: 3px;
   // padding: 8px;
   width: 600px;
-  margin: 1em auto;
+  margin: 1em auto 1.25em;
   h3{
     padding-bottom: 35px;
+  }
+  h4{
+    margin-bottom: 10px;
   }
   .price{
     padding-bottom: 20px;
@@ -77,4 +88,12 @@ main{
 .question-form{
   border: 1px black solid;
   margin: 32px 0;
+}
+
+.tag_line{
+  margin-bottom: 12px;
+}
+
+.article{
+  margin-top: 20px; 
 }

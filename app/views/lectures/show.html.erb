@@ -1,8 +1,10 @@
 <p id="notice"><%= notice %></p>
+<div class="question">
+  <h3><%= @lecture.title %></h3>
+  <%= image_tag @lecture.user.profile_pic_url(:thumb) %>
+  <p><%= link_to(@lecture.user.name, @lecture.user) %></p>
+  <p class="trix-content article"><%= strip_tags(sanitize(@lecture.content)) %></p>
+</div>
 
-<h4><%= @lecture.title %></h4>
-<p><%= @lecture.user.name %></p>
-<p><%= sanitize(@lecture.content) %></p>
-
-<%# link_to 'Edit', edit_lecture_path(@lecture) %> |
+<%# link_to 'Edit', edit_lecture_path(@lecture) %> 
 <%# link_to 'Back', lectures_path %>
