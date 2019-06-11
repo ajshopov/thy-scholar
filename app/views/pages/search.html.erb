@@ -1,1 +1,28 @@
+<h1>All</h1>
+<ul>
+  <% @all_items.each do |item| %>
+    <li>
+      <div class="question">
+        <% if item.is_a?(Question) %>
+          <h4><%= link_to item.query, item %></h4>
+          <p><%= image_tag item.recipient.profile_pic_url(:thumb) %></p>
+          <p><%= link_to item.recipient.name, user_path(item.recipient) %></p>
+          <% if !item.answer.nil? %>
+          <p><%= truncate(strip_tags(item.answer.response), length: 100,
+            separator: ' '){ link_to "(read more)", question_path(item) } %></p>
+          <% else %>
+            <p>This question hasn't been answered yet.</p>
+          <% end %>
+        <% else %>
+          <h4><%= link_to item.title, item %></h4>
+          <p><%= image_tag item.user.profile_pic_url(:thumb) %></p>
+          <p><%= link_to item.user.name, user_path(item.user) %></p>
+          <p><%= truncate(strip_tags(item.content), length: 200,
+            separator: ' '){ link_to "(read more)", item } %></p>
+        <% end %>
+      </div>
+    </li>
+  <% end %>
+</ul>
+
 

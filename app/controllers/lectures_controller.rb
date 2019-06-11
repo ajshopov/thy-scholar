@@ -4,7 +4,7 @@ class LecturesController < ApplicationController
   # GET /lectures
   # GET /lectures.json
   def index
-    @lectures = Lecture.all
+    @lectures = Lecture.order(updated_at: :desc).page(params[:page]).per(10)
   end
 
   # GET /lectures/1
