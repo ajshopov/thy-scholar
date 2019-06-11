@@ -8,9 +8,5 @@ h1 Questions
     p
     strong Amount: 
     = number_to_currency(question.price)
-    - if !question.answer.nil?
-        p =truncate(strip_tags(question.answer.response), length: 100,
-          separator: ' '){ link_to "(read more)", question_path(question) }
-    - else
-      p This question hasn't been answered yet.
+    p= has_answer(question)
 = paginate @questions

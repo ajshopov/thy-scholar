@@ -7,12 +7,7 @@
           <h4><%= link_to item.query, item %></h4>
           <p><%= image_tag item.recipient.profile_pic_url(:thumb) %></p>
           <p><%= link_to item.recipient.name, user_path(item.recipient) %></p>
-          <% if !item.answer.nil? %>
-          <p><%= truncate(strip_tags(item.answer.response), length: 100,
-            separator: ' '){ link_to "(read more)", question_path(item) } %></p>
-          <% else %>
-            <p>This question hasn't been answered yet.</p>
-          <% end %>
+          <p><%= has_answer(item) %></p>
         <% else %>
           <h4><%= link_to item.title, item %></h4>
           <p><%= image_tag item.user.profile_pic_url(:thumb) %></p>
