@@ -36,7 +36,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 gem 'activeadmin', '~> 1.4', '>= 1.4.3'
 gem 'carrierwave', '~> 1.3', '>= 1.3.1'
-gem 'devise', '~> 4.6', '>= 4.6.1'
+gem 'devise', '~> 4.7'
 gem 'faker', '~> 1.9', '>= 1.9.3'
 gem 'kaminari', '~> 1.1', '>= 1.1.1'
 gem 'mini_magick', '~> 4.9', '>= 4.9.3'
