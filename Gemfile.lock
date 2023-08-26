@@ -184,7 +184,11 @@ GEM
     net-http-persistent (3.0.0)
       connection_pool (~> 2.2)
     nio4r (2.3.1)
+<<<<<<< HEAD
     nokogiri (1.10.5)
+=======
+    nokogiri (1.10.8)
+>>>>>>> f6fb79fac24b6e31357f81d269656eb62979f1a4
       mini_portile2 (~> 2.4.0)
     oauth2 (1.4.1)
       faraday (>= 0.8, < 0.16.0)
